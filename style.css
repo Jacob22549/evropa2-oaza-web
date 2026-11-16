@@ -825,31 +825,92 @@ body:has(.oasis)::after {
 }
 
 /* =========================================================
-   EVROPA 2 – TVOJE ANIMOVANÉ GIF POZADÍ
+   EVROPA 2 – POMALÉ NEONOVÉ POZADÍ
+   Tmavý základ, modrá záře vlevo, červená vpravo
+   a jemná fialová uprostřed.
    ========================================================= */
 
 body:has(.subpage):not(:has(.oasis)) {
-  background-color: #080414 !important;
-  background-image:
-    linear-gradient(rgba(7, 3, 18, 0.22), rgba(7, 3, 18, 0.30)),
-    url("evropa2-background.gif") !important;
-  background-position: center center !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
+  background-color: #03040b !important;
+  background-image: none !important;
+  overflow-x: hidden;
 }
 
-/* GIF už obsahuje pohyb vln a ekvalizéru.
-   Vypneme původní efekty, aby se nepřekrývaly. */
+/* Hlavní barevné světlo */
+body:has(.subpage):not(:has(.oasis))::before {
+  content: "";
+  position: fixed;
+  inset: -35%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 15% 45%,
+      rgba(0, 75, 255, 0.38),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 85% 40%,
+      rgba(255, 0, 45, 0.34),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 50% 80%,
+      rgba(125, 0, 255, 0.20),
+      transparent 40%
+    );
+  filter: blur(65px);
+  animation: radioNeonMove 18s ease-in-out infinite alternate;
+}
 
-body:has(.subpage):not(:has(.oasis))::before,
+/* Druhá, jemnější vrstva světla */
 body:has(.subpage):not(:has(.oasis))::after {
-  content: none !important;
-  display: none !important;
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 25% 20%,
+      rgba(0, 100, 255, 0.16),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 75% 75%,
+      rgba(255, 0, 65, 0.15),
+      transparent 35%
+    );
+  filter: blur(85px);
+  animation: radioNeonPulse 13s ease-in-out infinite alternate;
 }
 
-@media (max-width: 760px) {
-  body:has(.subpage):not(:has(.oasis)) {
-    background-attachment: scroll !important;
+@keyframes radioNeonMove {
+  0% {
+    transform: translate(-5%, -3%) scale(1);
+  }
+  50% {
+    transform: translate(4%, 3%) scale(1.12);
+  }
+  100% {
+    transform: translate(-2%, 5%) scale(1.05);
+  }
+}
+
+@keyframes radioNeonPulse {
+  0% {
+    transform: translateX(-4%);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateX(4%);
+    opacity: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:has(.subpage):not(:has(.oasis))::before,
+  body:has(.subpage):not(:has(.oasis))::after {
+    animation: none !important;
   }
 }
