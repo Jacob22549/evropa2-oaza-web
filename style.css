@@ -914,3 +914,115 @@ body:has(.subpage):not(:has(.oasis))::after {
     animation: none !important;
   }
 }
+
+/* =========================================================
+   OÁZA VŠEHODRUHU – KOUZELNÁ OÁZA
+   Tmavý les, tyrkysová světla a jemná fialová mlha
+   ========================================================= */
+
+body:has(.oasis) {
+  background-color: #050d12 !important;
+  background-image: none !important;
+  overflow-x: hidden;
+}
+
+/* Hlavní světelná vrstva */
+body:has(.oasis)::before {
+  content: "";
+  position: fixed;
+  inset: -35%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 15% 35%,
+      rgba(0, 255, 200, 0.27),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 80% 25%,
+      rgba(120, 65, 255, 0.28),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 55% 85%,
+      rgba(0, 130, 110, 0.22),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 90% 85%,
+      rgba(80, 40, 160, 0.18),
+      transparent 35%
+    );
+  filter: blur(75px);
+  animation: oasisMagicMove 22s ease-in-out infinite alternate;
+}
+
+/* Jemná mlha a světlušky */
+body:has(.oasis)::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 25% 50%,
+      rgba(80, 255, 220, 0.12),
+      transparent 32%
+    ),
+    radial-gradient(
+      ellipse at 75% 65%,
+      rgba(170, 100, 255, 0.13),
+      transparent 35%
+    ),
+    radial-gradient(circle, rgba(130, 255, 220, 0.7) 1px, transparent 2px),
+    radial-gradient(circle, rgba(200, 160, 255, 0.6) 1px, transparent 2px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    95px 95px,
+    145px 145px;
+  background-position:
+    center,
+    center,
+    0 0,
+    45px 65px;
+  filter: blur(1px);
+  opacity: 0.55;
+  animation: oasisFireflies 30s linear infinite;
+}
+
+@keyframes oasisMagicMove {
+  0% {
+    transform: translate(-3%, -2%) scale(1);
+  }
+  50% {
+    transform: translate(3%, 2%) scale(1.1);
+  }
+  100% {
+    transform: translate(-2%, 4%) scale(1.04);
+  }
+}
+
+@keyframes oasisFireflies {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate(2%, -2%);
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(-2%, 2%);
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:has(.oasis)::before,
+  body:has(.oasis)::after {
+    animation: none !important;
+  }
+}
