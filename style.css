@@ -13,7 +13,6 @@
 }
 
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -23,17 +22,9 @@ body {
     radial-gradient(ellipse at 6% 55%, #073f4a30, transparent 30%);
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
-}
-
-/* ANIMOVANÁ POZADÍ */
-
-body {
   position: relative;
   isolation: isolate;
   background-color: var(--bg);
-  background-image:
-    radial-gradient(ellipse at 78% 7%, #28104455, transparent 34%),
-    radial-gradient(ellipse at 6% 55%, #073f4a30, transparent 30%);
   background-attachment: fixed;
 }
 
@@ -70,7 +61,7 @@ body:not(:has(.subpage))::after {
   animation: particleDrift 38s linear infinite;
 }
 
-/* EVROPA 2 */
+/* EVROPA 2 – PŮVODNÍ EFEKTY */
 
 body:has(.subpage):not(:has(.oasis))::before {
   opacity: .7;
@@ -289,18 +280,14 @@ a {
   transition: .2s;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-}
+.btn:hover { transform: translateY(-3px); }
 
 .primary {
   background: linear-gradient(100deg, #8d42e9, #db45c8);
   box-shadow: 0 8px 30px #a33fe844;
 }
 
-.primary span {
-  padding-left: 14px;
-}
+.primary span { padding-left: 14px; }
 
 .secondary {
   border: 1px solid #ffffff35;
@@ -341,9 +328,7 @@ a {
   box-shadow: 0 0 35px #d74edc;
 }
 
-.disc-inner span {
-  font-size: 40px;
-}
+.disc-inner span { font-size: 40px; }
 
 .orbit {
   position: absolute;
@@ -424,13 +409,8 @@ a {
 .s1 { top: 30px; right: 70px; }
 .s2 { bottom: 70px; left: 15px; color: var(--pink); }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes eq {
-  to { height: 20%; }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes eq { to { height: 20%; } }
 
 .ticker {
   height: 54px;
@@ -445,9 +425,7 @@ a {
   letter-spacing: 2px;
 }
 
-.ticker b {
-  color: var(--pink);
-}
+.ticker b { color: var(--pink); }
 
 .intro {
   max-width: 1104px;
@@ -519,9 +497,7 @@ a {
   margin-bottom: 24px;
 }
 
-.cyan .card-icon {
-  color: var(--cyan);
-}
+.cyan .card-icon { color: var(--cyan); }
 
 .feature-card h3 {
   font: 700 27px 'Space Grotesk';
@@ -561,9 +537,7 @@ a {
   max-width: 760px;
 }
 
-.subhero h1 {
-  font-size: clamp(50px, 7vw, 78px);
-}
+.subhero h1 { font-size: clamp(50px, 7vw, 78px); }
 
 .now-card {
   display: flex;
@@ -610,9 +584,7 @@ a {
   margin: 17px 0 8px;
 }
 
-.command p {
-  font-size: 13px;
-}
+.command p { font-size: 13px; }
 
 .callout {
   margin: 0 0 90px;
@@ -623,13 +595,8 @@ a {
   border-color: #51436d;
 }
 
-.callout h2 {
-  max-width: 600px;
-}
-
-.callout p {
-  font-size: 13px;
-}
+.callout h2 { max-width: 600px; }
+.callout p { font-size: 13px; }
 
 .callout-icon {
   font-size: 75px;
@@ -638,9 +605,7 @@ a {
   padding: 0 35px;
 }
 
-.oasis .eyebrow {
-  color: #76eee3;
-}
+.oasis .eyebrow { color: #76eee3; }
 
 .oasis-panel {
   display: flex;
@@ -683,9 +648,7 @@ a {
   box-shadow: 0 8px 30px #25d9bf33;
 }
 
-.oasis .command .card-icon {
-  color: var(--cyan);
-}
+.oasis .command .card-icon { color: var(--cyan); }
 
 footer {
   max-width: 1104px;
@@ -704,9 +667,7 @@ footer .brand {
   font-size: 15px;
 }
 
-footer>a:last-child {
-  color: #c3b4e9;
-}
+footer>a:last-child { color: #c3b4e9; }
 
 @media(max-width:760px) {
   .topbar {
@@ -734,9 +695,7 @@ footer>a:last-child {
   }
 
   .hero h1,
-  .subhero h1 {
-    letter-spacing: -2px;
-  }
+  .subhero h1 { letter-spacing: -2px; }
 
   .hero-art { height: 310px; }
   .disc { width: 205px; height: 205px; }
@@ -817,14 +776,12 @@ footer>a:last-child {
   }
 }
 
-/* VÝRAZNĚJŠÍ ANIMOVANÁ POZADÍ – FINÁLNÍ ÚPRAVA */
+/* VÝRAZNĚJŠÍ POZADÍ HLAVNÍ STRÁNKY A OÁZY */
 
 body::before,
 body::after {
   transition: opacity 1s ease;
 }
-
-/* HLAVNÍ STRÁNKA – FIALOVÁ A RŮŽOVÁ */
 
 body:not(:has(.subpage))::before {
   opacity: 1;
@@ -847,38 +804,6 @@ body:not(:has(.subpage))::after {
   animation: particleDrift 20s linear infinite;
 }
 
-/* EVROPA 2 – ČERVENÁ A MODRÁ */
-
-body:has(.subpage):not(:has(.oasis))::before {
-  opacity: 1;
-  background:
-    radial-gradient(ellipse at 15% 30%, #ff174d99, transparent 35%),
-    radial-gradient(ellipse at 85% 35%, #126bff99, transparent 38%),
-    radial-gradient(ellipse at 50% 85%, #a000ff55, transparent 35%);
-  background-size: 180% 180%;
-  animation: radioGlow 7s ease-in-out infinite alternate;
-}
-
-body:has(.subpage):not(:has(.oasis))::after {
-  opacity: .45;
-  background:
-    repeating-linear-gradient(
-      115deg,
-      transparent 0 35px,
-      #ff174d33 36px 39px,
-      transparent 40px 80px
-    ),
-    repeating-linear-gradient(
-      25deg,
-      transparent 0 50px,
-      #1680ff33 51px 54px,
-      transparent 55px 110px
-    );
-  animation: soundWaves 9s ease-in-out infinite alternate;
-}
-
-/* OÁZA – TYRKYSOVÁ A FIALOVÁ */
-
 body:has(.oasis)::before {
   opacity: 1;
   background:
@@ -897,4 +822,34 @@ body:has(.oasis)::after {
   background-size: 85px 85px, 135px 135px;
   background-position: 0 0, 55px 75px;
   animation: particleDrift 25s linear infinite;
+}
+
+/* =========================================================
+   EVROPA 2 – TVOJE ANIMOVANÉ GIF POZADÍ
+   ========================================================= */
+
+body:has(.subpage):not(:has(.oasis)) {
+  background-color: #080414 !important;
+  background-image:
+    linear-gradient(rgba(7, 3, 18, 0.22), rgba(7, 3, 18, 0.30)),
+    url("evropa2-background.gif") !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+/* GIF už obsahuje pohyb vln a ekvalizéru.
+   Vypneme původní efekty, aby se nepřekrývaly. */
+
+body:has(.subpage):not(:has(.oasis))::before,
+body:has(.subpage):not(:has(.oasis))::after {
+  content: none !important;
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  body:has(.subpage):not(:has(.oasis)) {
+    background-attachment: scroll !important;
+  }
 }
