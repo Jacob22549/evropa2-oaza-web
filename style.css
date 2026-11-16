@@ -931,3 +931,40 @@ body:has(.oasis)::after {
     animation: none !important;
   }
 }
+
+/* =========================================================
+   OPRAVA POZADÍ – ODSTRANĚNÍ TEČEK
+   ========================================================= */
+
+/* Hlavní stránka – vypnutí tečkované vrstvy */
+body:not(:has(.subpage))::after {
+  background: none !important;
+  background-image: none !important;
+  animation: none !important;
+  opacity: 0 !important;
+}
+
+/* Oáza – pouze rozmazaná barevná mlha, žádné tečky */
+body:has(.oasis)::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 25% 50%,
+      rgba(80, 255, 220, 0.12),
+      transparent 32%
+    ),
+    radial-gradient(
+      ellipse at 75% 65%,
+      rgba(170, 100, 255, 0.13),
+      transparent 35%
+    ) !important;
+  background-size: auto !important;
+  background-position: center !important;
+  filter: blur(45px);
+  opacity: 0.7;
+  animation: oasisMistMove 30s ease-in-out infinite alternate;
+}
