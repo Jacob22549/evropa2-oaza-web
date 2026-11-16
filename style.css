@@ -12,13 +12,9 @@
   --cyan: #36e6e0;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -29,9 +25,7 @@ body {
   font-family: 'DM Sans', sans-serif;
 }
 
-/* =========================================================
-   ANIMOVANÁ POZADÍ – hlavní stránka / Evropa 2 / Oáza
-   ========================================================= */
+/* ANIMOVANÁ POZADÍ */
 
 body {
   position: relative;
@@ -53,7 +47,7 @@ body::after {
   will-change: transform, opacity, background-position;
 }
 
-/* Hlavní stránka – fialové a růžové částice */
+/* HLAVNÍ STRÁNKA */
 
 body:not(:has(.subpage))::before {
   opacity: .75;
@@ -76,7 +70,7 @@ body:not(:has(.subpage))::after {
   animation: particleDrift 38s linear infinite;
 }
 
-/* Evropa 2 – červené a modré zvukové vlny */
+/* EVROPA 2 */
 
 body:has(.subpage):not(:has(.oasis))::before {
   opacity: .7;
@@ -106,7 +100,7 @@ body:has(.subpage):not(:has(.oasis))::after {
   animation: soundWaves 22s ease-in-out infinite alternate;
 }
 
-/* Oáza – tyrkysové a fialové hvězdy */
+/* OÁZA */
 
 body:has(.oasis)::before {
   opacity: .72;
@@ -821,4 +815,86 @@ footer>a:last-child {
     order: 3;
     width: 100%;
   }
+}
+
+/* VÝRAZNĚJŠÍ ANIMOVANÁ POZADÍ – FINÁLNÍ ÚPRAVA */
+
+body::before,
+body::after {
+  transition: opacity 1s ease;
+}
+
+/* HLAVNÍ STRÁNKA – FIALOVÁ A RŮŽOVÁ */
+
+body:not(:has(.subpage))::before {
+  opacity: 1;
+  background:
+    radial-gradient(ellipse at 20% 30%, #a020ff88, transparent 35%),
+    radial-gradient(ellipse at 80% 20%, #ff28bb66, transparent 35%),
+    radial-gradient(ellipse at 60% 85%, #742cff66, transparent 40%),
+    radial-gradient(ellipse at 90% 75%, #ff4fd833, transparent 30%);
+  background-size: 180% 180%;
+  animation: homeGlow 10s ease-in-out infinite alternate;
+}
+
+body:not(:has(.subpage))::after {
+  opacity: .5;
+  background-image:
+    radial-gradient(circle, #ffffff 1.5px, transparent 2.5px),
+    radial-gradient(circle, #e879ff 2px, transparent 3px);
+  background-size: 75px 75px, 125px 125px;
+  background-position: 0 0, 45px 60px;
+  animation: particleDrift 20s linear infinite;
+}
+
+/* EVROPA 2 – ČERVENÁ A MODRÁ */
+
+body:has(.subpage):not(:has(.oasis))::before {
+  opacity: 1;
+  background:
+    radial-gradient(ellipse at 15% 30%, #ff174d99, transparent 35%),
+    radial-gradient(ellipse at 85% 35%, #126bff99, transparent 38%),
+    radial-gradient(ellipse at 50% 85%, #a000ff55, transparent 35%);
+  background-size: 180% 180%;
+  animation: radioGlow 7s ease-in-out infinite alternate;
+}
+
+body:has(.subpage):not(:has(.oasis))::after {
+  opacity: .45;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 35px,
+      #ff174d33 36px 39px,
+      transparent 40px 80px
+    ),
+    repeating-linear-gradient(
+      25deg,
+      transparent 0 50px,
+      #1680ff33 51px 54px,
+      transparent 55px 110px
+    );
+  animation: soundWaves 9s ease-in-out infinite alternate;
+}
+
+/* OÁZA – TYRKYSOVÁ A FIALOVÁ */
+
+body:has(.oasis)::before {
+  opacity: 1;
+  background:
+    radial-gradient(ellipse at 15% 25%, #00ffe099, transparent 35%),
+    radial-gradient(ellipse at 85% 20%, #813cff99, transparent 38%),
+    radial-gradient(ellipse at 60% 80%, #00bba866, transparent 35%);
+  background-size: 180% 180%;
+  animation: oasisGlow 9s ease-in-out infinite alternate;
+}
+
+body:has(.oasis)::after {
+  opacity: .55;
+  background-image:
+    radial-gradient(circle, #8ffff0 2px, transparent 3px),
+    radial-gradient(circle, #bd8aff 1.5px, transparent 2.5px);
+  background-size: 85px 85px, 135px 135px;
+  background-position: 0 0, 55px 75px;
+  animation: particleDrift 25s linear infinite;
 }
