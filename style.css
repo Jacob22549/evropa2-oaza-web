@@ -933,38 +933,95 @@ body:has(.oasis)::after {
 }
 
 /* =========================================================
-   OPRAVA POZADÍ – ODSTRANĚNÍ TEČEK
+   O PROJEKTU – VESMÍRNÁ FIALOVO-TYRKYSOVÁ ATMOSFÉRA
+   Aktivuje se po kliknutí na odkaz O projektu (#about).
+   Bez teček, hvězdiček a částic.
    ========================================================= */
 
-/* Hlavní stránka – vypnutí tečkované vrstvy */
-body:not(:has(.subpage))::after {
-  background: none !important;
+body:has(#about:target) {
+  background-color: #070713 !important;
   background-image: none !important;
-  animation: none !important;
-  opacity: 0 !important;
 }
 
-/* Oáza – pouze rozmazaná barevná mlha, žádné tečky */
-body:has(.oasis)::after {
+/* Na stránce O projektu vypnout všechny původní částice/tečky z homepage. */
+body:has(#about:target)::before,
+body:has(#about:target)::after {
+  background-image: none;
+}
+
+body:has(#about:target)::before {
   content: "";
   position: fixed;
-  inset: -20%;
+  inset: -35%;
   z-index: -1;
   pointer-events: none;
   background:
     radial-gradient(
-      ellipse at 25% 50%,
-      rgba(80, 255, 220, 0.12),
-      transparent 32%
+      ellipse at 18% 22%,
+      rgba(116, 62, 255, 0.34),
+      transparent 38%
     ),
     radial-gradient(
-      ellipse at 75% 65%,
-      rgba(170, 100, 255, 0.13),
-      transparent 35%
-    ) !important;
-  background-size: auto !important;
-  background-position: center !important;
-  filter: blur(45px);
-  opacity: 0.7;
-  animation: oasisMistMove 30s ease-in-out infinite alternate;
+      ellipse at 82% 30%,
+      rgba(38, 210, 220, 0.23),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 55% 85%,
+      rgba(145, 75, 255, 0.20),
+      transparent 42%
+    );
+  filter: blur(75px);
+  animation: projectNebula 24s ease-in-out infinite alternate;
+}
+
+body:has(#about:target)::after {
+  content: "";
+  position: fixed;
+  inset: -30%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 30% 72%,
+      rgba(45, 170, 220, 0.14),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 78% 18%,
+      rgba(180, 105, 255, 0.13),
+      transparent 40%
+    );
+  filter: blur(95px);
+  animation: projectNebulaSecond 30s ease-in-out infinite alternate;
+}
+
+@keyframes projectNebula {
+  0% {
+    transform: translate(-3%, -2%) scale(1);
+  }
+  50% {
+    transform: translate(3%, 2%) scale(1.10);
+  }
+  100% {
+    transform: translate(-1%, 4%) scale(1.04);
+  }
+}
+
+@keyframes projectNebulaSecond {
+  0% {
+    transform: translate(2%, 1%) scale(1.02);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(-3%, -2%) scale(1.09);
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:has(#about:target)::before,
+  body:has(#about:target)::after {
+    animation: none !important;
+  }
 }
